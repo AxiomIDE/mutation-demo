@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package axiom_official.mutation_demo_messages;
+
+option go_package = "axiom-official/mutation-demo-messages/gen";
+
+// Pulse is the single message exchanged between AddNode and Identity
+// in the EPIC-SAF-003 mutation-demo seed flow. Imported by both
+// downstream packages so their I/O types resolve to the SAME fully-
+// qualified name (axiom_official.mutation_demo_messages.Pulse), which
+// is what the registry's strict edge type check requires at compile
+// time and what ADR-051's mutationcompile rejection-on-mismatch
+// requires when the runtime fork lands.
+message Pulse {
+  // Whatever the caller typed into the run dialog. Carried unchanged
+  // through both nodes; the terminal Identity emits it as the flow's
+  // final output.
+  string text = 1;
+}

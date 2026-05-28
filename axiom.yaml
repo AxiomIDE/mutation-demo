@@ -2,34 +2,32 @@ name: axiom-official/mutation-demo
 version: 0.1.0
 language: python
 description: |
-  EPIC-SAF-003 minimum-proof-of-mutation demo (ADR-051 + ADR-052).
+    EPIC-SAF-003 minimum-proof-of-mutation demo (ADR-051 + ADR-052).
 
-  Holds AddNode — the seed flow's only authored node. On first run,
-  AddNode emits a MutationBatch that adds axiom-official/identity-demo's
-  Identity node + the edge AddNode→Identity. ADR-051's amended
-  resume-from-emitter semantics (2026-05-27) cause the child execution
-  to pick up at AddNode's outgoing edges with AddNode's output as the
-  carried payload — Identity runs, completes, terminal.
+    Holds AddNode — the seed flow's only authored node. On first run,
+    AddNode emits a MutationBatch that adds axiom-official/identity-demo's
+    Identity node + the edge AddNode→Identity. ADR-051's amended
+    resume-from-emitter semantics (2026-05-27) cause the child execution
+    to pick up at AddNode's outgoing edges with AddNode's output as the
+    carried payload — Identity runs, completes, terminal.
 author: Axiom Official
 license: MIT
 tags:
-  - demo
-  - mutation
-  - epic-saf-003
-
+    - demo
+    - mutation
+    - epic-saf-003
 nodes:
-  - name: AddNode
-    input: Pulse
-    output: Pulse
-    description: |
-      Seed-flow bootstrap. Emits the MutationBatch that splices
-      Identity into the running graph. Runs exactly once per
-      top-level invocation thanks to ADR-051's resume-from-emitter
-      semantics — no idempotency tracking required.
-    mutation_capable: true
-
+    - name: AddNode
+      description: |
+        Seed-flow bootstrap. Emits the MutationBatch that splices
+        Identity into the running graph. Runs exactly once per
+        top-level invocation thanks to ADR-051's resume-from-emitter
+        semantics — no idempotency tracking required.
+      input: Pulse
+      output: Pulse
+      mutation_capable: true
 imports:
-  - package: axiom-official/mutation-demo-messages
-    version: 0.1.0
-    messages:
-      - Pulse
+    - package: axiom-official/mutation-demo-messages
+      version: 0.1.0
+      messages:
+        - Pulse
