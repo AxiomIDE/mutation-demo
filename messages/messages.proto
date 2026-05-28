@@ -1,0 +1,6 @@
+syntax = "proto3";
+package axiom_official.mutation_demo;
+option go_package = "axiom-official/mutation-demo/gen";
+// Pulse is imported from axiom-official/mutation-demo-messages via
+// the `imports:` section of axiom.yaml. This file exists so the
+// build's protoc invocation produces a non-empty gen/messages_pb2.py.
