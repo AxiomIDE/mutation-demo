@@ -30,6 +30,7 @@ def add_node(ax: AxiomContext, input: Pulse) -> Pulse:
         new_iid = ax.mutation.flow.add_node(
             package=ADDED_PACKAGE,
             version=ADDED_PACKAGE_VERSION,
+            node_name="Identity",
         )
         pos = ax.reflection.flow.position
         ax.mutation.flow.add_edge(
